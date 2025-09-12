@@ -8,4 +8,4 @@ healthRouter.route("/").get((req: Request | any, res: Response | any) => {
     .json(new ApiResponse(true, 200, "Everything is working fine", null, null));
 });
 
-export  {healthRouter}
+export { healthRouter };

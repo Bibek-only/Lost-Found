@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc -b",
     "start": "node ./dist/index.js",
-    "dev": "tsc -b && node ./dist/index.js"
+    "dev": "tsc -b && node ./dist/index.js",
+    "format": "npx prettier --write ."
   },
   "author": {
     "Name": "Bibek samal",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
+    "prettier": "3.6.2",
     "typescript": "^5.9.2"
   },
   "dependencies": {

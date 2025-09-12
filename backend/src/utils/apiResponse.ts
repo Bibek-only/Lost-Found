@@ -10,13 +10,13 @@ class ApiResponse {
     statusCode: number,
     message: string = "Success",
     data: any,
-    error:any
+    error: any,
   ) {
     this.success = success;
     this.statusCode = statusCode;
     this.message = message;
     this.data = data;
-    this.error = error
+    this.error = error;
   }
 }
 
