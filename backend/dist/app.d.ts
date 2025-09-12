@@ -1,2 +1,2 @@
-declare const a = 89;
-export { a };
+declare const app: import("express-serve-static-core").Express;
+export default app;
