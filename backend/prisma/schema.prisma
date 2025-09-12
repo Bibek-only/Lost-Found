@@ -13,3 +13,156 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL_DEV")
 }
+
+//user type
+enum UserType {
+  ADMIN
+  NORMAL
+}
+
+enum CampusRole {
+  STUDENT
+  TEACHER
+  FACULTY
+  STAFF
+  OTHER
+}
+
+enum UserState {
+  LOST
+  FOUND
+  NONE
+}
+
+enum CurrentYear {
+  FIRST
+  SECOND
+  THIRD
+  FOURTH
+}
+
+enum Designation {
+  PROFESSOR
+  ASSOCIATE_PROFESSOR
+  ASSISTANT_PROFESSOR
+  LECTURER
+  HOD
+  PRINCIPAL
+  LAB_ASSISTANT
+  LIBRARIAN
+  ADMINISTRATIVE_STAFF
+  CLERK
+  SECURITY
+  OTHER
+}
+
+enum JobTitle {
+  LAB_TECHNICIAN
+  OFFICE_ASSISTANT
+  LIBRARY_ASSISTANT
+  ACCOUNTANT
+  DRIVER
+  PEON
+  CLEANER
+  SECURITY_GUARD
+  ELECTRICIAN
+  PLUMBER
+  GARDENER
+  MAINTENANCE_WORKER
+  IT_SUPPORT
+  HOSTEL_WARDEN
+  CANTEEN_STAFF
+  OTHER
+}
+
+//user Model
+model User {
+  id           Int      @id @unique @default(autoincrement())
+  fullName     String
+  firstName    String?
+  middleName   String?
+  lastName     String?
+  profileImage String?
+  email        String   @unique
+  phoneNo      String?
+  address      Address?
+
+  userType   UserType   @default(NORMAL)
+  campusRole CampusRole @default(STUDENT)
+  userState  UserState  @default(NONE)
+
+  // Student Info
+  branch       String?
+  academicYear String?
+  section      String?
+  currentYear  CurrentYear?
+
+  // Teacher Info
+  designation Designation?
+  department  String?
+
+  // Staff Info
+  jobTitle  JobTitle? // e.g., "Librarian"
+  staffDept String? // e.g., "Library", "Admin"
+
+  // Other
+  description String? // e.g., "Alumni – Batch 2018"
+
+  //reference to tthe listing
+  listing Listing[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Address {
+  id       Int     @id @unique @default(autoincrement())
+  country  String?
+  state    String?
+  district String?
+  city     String?
+  pin      String?
+
+  userId Int  @unique
+  user   User @relation(fields: [userId], references: [id])
+}
+
+enum ListingType {
+  LOST
+  FOUND
+}
+
+enum ListingStatus {
+  ACTIVE
+  RESOLVED
+  EXPIRED
+}
+
+model Listing {
+  id Int @id @unique @default(autoincrement())
+
+  title       String
+  description String?
+  keywords    String[]
+
+  listingType ListingType //lost or found
+  status      ListingStatus @default(ACTIVE) //the product is founded or not
+  landmark    String? // e.g., "Near Library"
+
+  lostOrFoundAt DateTime? // When user lost/found it
+  createdAt     DateTime  @default(now()) //time of the entry
+  updatedAt     DateTime  @updatedAt //time of update of the entry
+
+  isDeleted Boolean @default(false)
+
+  images ItemImage[] //relation to image model
+  userId Int
+  user   User        @relation(fields: [userId], references: [id])
+}
+
+model ItemImage {
+  id        Int     @id @unique @default(autoincrement())
+  imageUrl  String
+  listingId Int
+  listing   Listing @relation(fields: [listingId], references: [id])
+}
