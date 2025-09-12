@@ -1,1 +1,1 @@
-{"root":["./src/app.ts","./src/index.ts","./src/router/healthRouter.ts","./src/utils/apiError.ts","./src/utils/apiResponse.ts"],"version":"5.9.2"}
+{"root":["./src/app.ts","./src/index.ts","./src/db/prismaClient.ts","./src/router/healthRouter.ts","./src/utils/apiError.ts","./src/utils/apiResponse.ts"],"version":"5.9.2"}

@@ -10,18 +10,23 @@
     "format": "npx prettier --write ."
   },
   "author": {
-    "Name": "Bibek samal",
-    "Course": "Master in Computer Application (MCA)",
+    "name": "Bibek samal",
+    "Course": "Master in Computer Application (MCA), Academin year- 2025-27",
     "Collage": "Indira Gandhi Institute Of Technology, Sarang"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
+    "@types/dotenv": "^8.2.3",
     "@types/express": "^5.0.3",
     "prettier": "3.6.2",
+    "prisma": "^6.16.1",
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "@prisma/client": "^6.16.1",
     "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "zod": "^4.1.8"
   }
 }

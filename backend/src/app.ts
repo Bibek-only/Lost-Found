@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import express from "express";
 import cors from "cors";
 import { healthRouter } from "./router/healthRouter";
@@ -14,11 +15,5 @@ app.use(
 //rotuer configuration
 app.use("/health", healthRouter);
 
-app.get("/", (req: any, res: any) => {
-  res.status(200).json({
-    success: true,
-    msg: "Everthing is fine and the site is working successfully",
-  });
-});
 
 export default app;
