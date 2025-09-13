@@ -15,3 +15,13 @@ authRouter.get(
 authRouter.get(
 //after the loginwas done this end point was hit as call back url
 "/google/callback", passport_config_1.default.authenticate("google", { session: false }), googleAuthCallback_controller_1.googleAuthCallback);
+authRouter.post("/logout", (req, res) => {
+    res.clearCookie("token", {
+        httpOnly: true,
+        path: "/",
+    });
+    res.status(200).json({
+        success: true,
+        message: "Logged out successfully",
+    });
+});

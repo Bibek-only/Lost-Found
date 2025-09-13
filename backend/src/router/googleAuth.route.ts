@@ -17,4 +17,15 @@ authRouter.get(
   googleAuthCallback,
 );
 
-export {authRouter};
+// authRouter.post("/logout", (req: Request, res: Response | any) => { //logout route make it an api endpoint
+//   res.clearCookie("token", {
+//     httpOnly: true,
+//     path: "/",
+//   });
+//   res.status(200).json({
+//     success: true,
+//     message: "Logged out successfully",
+//   });
+// });
+
+export { authRouter };
