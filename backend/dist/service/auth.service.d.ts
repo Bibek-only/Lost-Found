@@ -1,0 +1,25 @@
+import { Profile } from "passport-google-oauth20";
+export declare function findOrCreateUser(profile: Profile): Promise<{
+    id: number;
+    email: string;
+    fullName: string;
+    firstName: string | null;
+    middleName: string | null;
+    lastName: string | null;
+    profileImage: string | null;
+    phoneNo: string | null;
+    userType: import("@prisma/client").$Enums.UserType;
+    campusRole: import("@prisma/client").$Enums.CampusRole;
+    userState: import("@prisma/client").$Enums.UserState;
+    branch: string | null;
+    academicYear: string | null;
+    section: string | null;
+    currentYear: import("@prisma/client").$Enums.CurrentYear | null;
+    designation: import("@prisma/client").$Enums.Designation | null;
+    department: string | null;
+    jobTitle: import("@prisma/client").$Enums.JobTitle | null;
+    staffDept: string | null;
+    description: string | null;
+    createdAt: Date;
+    updatedAt: Date;
+} | undefined>;

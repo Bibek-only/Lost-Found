@@ -15,18 +15,26 @@
     "Collage": "Indira Gandhi Institute Of Technology, Sarang"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.9",
     "@types/cors": "^2.8.19",
     "@types/dotenv": "^8.2.3",
     "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/passport": "^1.0.17",
+    "@types/passport-google-oauth20": "^2.0.16",
     "prettier": "3.6.2",
     "prisma": "^6.16.1",
     "typescript": "^5.9.2"
   },
   "dependencies": {
     "@prisma/client": "^6.16.1",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
     "zod": "^4.1.8"
   }
 }
