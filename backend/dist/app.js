@@ -1,4 +1,5 @@
 "use strict";
+//test imports
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -13,6 +14,7 @@ const healthRouter_1 = require("./router/healthRouter");
 const googleAuth_route_1 = require("./router/googleAuth.route");
 const apiError_1 = __importDefault(require("./utils/apiError"));
 const apiResponse_1 = __importDefault(require("./utils/apiResponse"));
+const SendEmail_1 = require("./helper/SendEmail");
 const app = (0, express_1.default)();
 //middlewares
 app.use(express_1.default.json()); //middleware to parse/access the body
@@ -27,6 +29,21 @@ app.use((0, cookie_parser_1.default)()); //to configure the cokkie
 app.use("/api/v1/health", healthRouter_1.healthRouter);
 //auth router configuraton
 app.use("/api/v1/user/auth", googleAuth_route_1.authRouter);
+// A test router to test functionality of function in temporary bases
+app.get("/test", async (req, res) => {
+    await (0, SendEmail_1.sendEmail)({
+        to: "bibekbibek966@gmail.com", // replace with your test email
+        subject: "🔔 Lost & Found Portal – A product has been reported",
+        productName: "Black Backpack",
+        productImageUrl: "https://via.placeholder.com/400x250.png?text=Lost+Item",
+        description: "A black backpack with multiple compartments. Contains some books and a water bottle.",
+        keywords: ["backpack", "black", "bag", "lost"],
+        founderName: "Amit Sharma",
+        founderDepartment: "Computer Science",
+        founderRole: "Student",
+    });
+    res.send("mail send");
+});
 // Global error handler
 app.use((err, req, res, next) => {
     if (err instanceof apiError_1.default) {

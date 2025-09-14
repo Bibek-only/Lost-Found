@@ -17,7 +17,7 @@ const envSchema = zod_1.default.object({
     APP_PASSWORD: zod_1.default.string(),
     FRONTEND_URL_DEV: zod_1.default.string(),
     GOOGLE_CLIENT_ID: zod_1.default.string(),
-    GOOGLE_CLIENT_SECREATE: zod_1.default.string(),
+    GOOGLE_CLIENT_SECRET: zod_1.default.string(),
     GOOGLE_CALLBACK_URL_DEV: zod_1.default.string(),
 });
 exports.validENV = envSchema.parse(process.env);

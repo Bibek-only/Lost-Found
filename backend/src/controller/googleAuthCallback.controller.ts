@@ -27,4 +27,4 @@ const googleAuthCallback = (req: any, res: any) => {
   res.redirect(`${validENV.FRONTEND_URL_DEV}/`); //after successfyll setthe cookie send the user to frontend url
 };
 
-export{googleAuthCallback};
+export { googleAuthCallback };

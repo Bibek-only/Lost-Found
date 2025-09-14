@@ -12,7 +12,7 @@ const envSchema = z.object({
   APP_PASSWORD: z.string(),
   FRONTEND_URL_DEV: z.string(),
   GOOGLE_CLIENT_ID: z.string(),
-  GOOGLE_CLIENT_SECREATE: z.string(),
+  GOOGLE_CLIENT_SECRET: z.string(),
   GOOGLE_CALLBACK_URL_DEV: z.string(),
 });
 

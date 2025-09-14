@@ -1,6 +1,8 @@
+//test imports
+
 import "dotenv/config";
 import { validENV } from "./schemas/envSchema";
-import express,{Request,Response,NextFunction} from "express";
+import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import passport from "./configuration/passport.config";
@@ -28,14 +30,14 @@ app.use("/api/v1/health", healthRouter);
 //auth router configuraton
 app.use("/api/v1/user/auth", authRouter);
 
+// A test router to test functionality of function in temporary bases
+app.get("/test", async (req, res) => {
+  res.send("mail send");
+});
+
 // Global error handler
 app.use(
-  (
-    err: any,
-    req: Request | any,
-    res: Response | any,
-    next: NextFunction,
-  ) => {
+  (err: any, req: Request | any, res: Response | any, next: NextFunction) => {
     if (err instanceof ApiError) {
       return res
         .status(err.statusCode)
@@ -52,7 +54,7 @@ app.use(
 );
 
 // 404 handler
-app.use((req:Request | any, res:Response | any) => {
+app.use((req: Request | any, res: Response | any) => {
   res
     .status(404)
     .json(new ApiResponse(false, 404, "Route not found", null, null));

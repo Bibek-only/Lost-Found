@@ -9,7 +9,7 @@ const passport_google_oauth20_1 = require("passport-google-oauth20");
 const auth_service_1 = require("../service/auth.service");
 passport_1.default.use(new passport_google_oauth20_1.Strategy({
     clientID: envSchema_1.validENV.GOOGLE_CLIENT_ID,
-    clientSecret: envSchema_1.validENV.GOOGLE_CLIENT_SECREATE,
+    clientSecret: envSchema_1.validENV.GOOGLE_CLIENT_SECRET,
     callbackURL: envSchema_1.validENV.GOOGLE_CALLBACK_URL_DEV, // this callback url is the exact url given in the google console it need to hited after successful loging
 }, async (accessToken, refreshToken, profile, done) => {
     try {
