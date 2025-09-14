@@ -1,5 +1,3 @@
-//test imports
-
 import "dotenv/config";
 import { validENV } from "./schemas/envSchema";
 import express, { Request, Response, NextFunction } from "express";
@@ -10,6 +8,7 @@ import { healthRouter } from "./router/healthRouter";
 import { authRouter } from "./router/googleAuth.route";
 import ApiError from "./utils/apiError";
 import ApiResponse from "./utils/apiResponse";
+import { imageRouter } from "./router/imageUplodRouter";
 const app = express();
 
 //middlewares
@@ -29,6 +28,9 @@ app.use("/api/v1/health", healthRouter);
 
 //auth router configuraton
 app.use("/api/v1/user/auth", authRouter);
+
+// image upload router configuration
+app.use("/api/v1/user/image", imageRouter);
 
 // A test router to test functionality of function in temporary bases
 app.get("/test", async (req, res) => {

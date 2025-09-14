@@ -10,4 +10,8 @@ export declare const validENV: {
     GOOGLE_CLIENT_ID: string;
     GOOGLE_CLIENT_SECRET: string;
     GOOGLE_CALLBACK_URL_DEV: string;
+    IMAGE_KIT_ID: string;
+    IMAGE_KIT_PUBLIC_KEY: string;
+    IMAGE_KIT_PRIVATEkEY: string;
+    IMAGE_KIT_URL_ENDPOINT: string;
 };

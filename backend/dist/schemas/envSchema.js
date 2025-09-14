@@ -19,5 +19,9 @@ const envSchema = zod_1.default.object({
     GOOGLE_CLIENT_ID: zod_1.default.string(),
     GOOGLE_CLIENT_SECRET: zod_1.default.string(),
     GOOGLE_CALLBACK_URL_DEV: zod_1.default.string(),
+    IMAGE_KIT_ID: zod_1.default.string(),
+    IMAGE_KIT_PUBLIC_KEY: zod_1.default.string(),
+    IMAGE_KIT_PRIVATEkEY: zod_1.default.string(),
+    IMAGE_KIT_URL_ENDPOINT: zod_1.default.string(),
 });
 exports.validENV = envSchema.parse(process.env);
