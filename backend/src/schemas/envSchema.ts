@@ -14,6 +14,10 @@ const envSchema = z.object({
   GOOGLE_CLIENT_ID: z.string(),
   GOOGLE_CLIENT_SECRET: z.string(),
   GOOGLE_CALLBACK_URL_DEV: z.string(),
+  IMAGE_KIT_ID: z.string(),
+  IMAGE_KIT_PUBLIC_KEY: z.string(),
+  IMAGE_KIT_PRIVATEkEY: z.string(),
+  IMAGE_KIT_URL_ENDPOINT: z.string(),
 });
 
 export const validENV = envSchema.parse(process.env);
