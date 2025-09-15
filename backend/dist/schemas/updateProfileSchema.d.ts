@@ -4,7 +4,6 @@ declare const updateProfileSchema: z.ZodObject<{
     middleName: z.ZodOptional<z.ZodString>;
     lastName: z.ZodOptional<z.ZodString>;
     profileImage: z.ZodString;
-    email: z.ZodString;
     phoneNo: z.ZodString;
     campusRole: z.ZodString;
     branch: z.ZodString;
@@ -19,8 +18,8 @@ declare const updateProfileSchema: z.ZodObject<{
     designation: z.ZodOptional<z.ZodString>;
     department: z.ZodOptional<z.ZodString>;
     jobTitle: z.ZodOptional<z.ZodString>;
-    staffDept: z.ZodString;
-    other: z.ZodString;
+    staffDept: z.ZodOptional<z.ZodString>;
+    other: z.ZodOptional<z.ZodString>;
     country: z.ZodOptional<z.ZodString>;
     state: z.ZodOptional<z.ZodString>;
     district: z.ZodOptional<z.ZodString>;

@@ -17,7 +17,6 @@ const updateProfileSchema = z.object({
     .string()
     .trim()
     .min(1, { message: "Profile image is required" }),
-  email: z.string().email("A valid email is required"),
   phoneNo: z.string().length(10, { message: "Enter a valid phone number" }),
   campusRole: z.string().min(1, { message: "Enter a valid compus role" }),
 
@@ -43,11 +42,13 @@ const updateProfileSchema = z.object({
   staffDept: z
     .string()
     .trim()
-    .min(1, { message: "Enter a valid department name" }),
+    .min(1, { message: "Enter a valid department name" })
+    .optional(),
   other: z
     .string()
     .trim()
-    .min(1, { message: "Enter your valid role in compus" }),
+    .min(1, { message: "Enter your valid role in compus" })
+    .optional(),
   country: z
     .string()
     .trim()

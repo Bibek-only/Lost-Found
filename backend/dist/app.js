@@ -15,6 +15,7 @@ const apiError_1 = __importDefault(require("./utils/apiError"));
 const apiResponse_1 = __importDefault(require("./utils/apiResponse"));
 const imageUplodRouter_1 = require("./router/imageUplodRouter");
 const testing_route_1 = require("./router/testing.route");
+const user_router_1 = require("./router/user.router");
 const app = (0, express_1.default)();
 //middlewares
 app.use(express_1.default.json()); //middleware to parse/access the body
@@ -33,6 +34,8 @@ app.use("/api/v1/user/auth", googleAuth_route_1.authRouter);
 app.use("/api/v1/user/image", imageUplodRouter_1.imageRouter);
 //configured the testing route
 app.use("/api/v1/user/auth/testing", testing_route_1.testingRouter);
+//user router configuration
+app.use("/api/v1/user", user_router_1.userRouter);
 // A test router to test functionality of function in temporary bases
 app.get("/test", async (req, res) => {
     res.send("mail send");

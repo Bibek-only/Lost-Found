@@ -10,6 +10,7 @@ import ApiError from "./utils/apiError";
 import ApiResponse from "./utils/apiResponse";
 import { imageRouter } from "./router/imageUplodRouter";
 import { testingRouter } from "./router/testing.route";
+import { userRouter } from "./router/user.router";
 const app = express();
 
 //middlewares
@@ -35,6 +36,9 @@ app.use("/api/v1/user/image", imageRouter);
 
 //configured the testing route
 app.use("/api/v1/user/auth/testing",testingRouter)
+
+//user router configuration
+app.use("/api/v1/user",userRouter);
 
 // A test router to test functionality of function in temporary bases
 app.get("/test", async (req, res) => {
