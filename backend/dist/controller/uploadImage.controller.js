@@ -55,12 +55,6 @@ const imageUpload = async (req, res, next) => {
         return res.status(200).json(new apiResponse_1.default(true, 200, "Image uploaded successfully", {
             fileId: imageUploadRes.fileId,
             imageUrl: imageUploadRes.url,
-            thumbnailUrl: imageUploadRes.thumbnailUrl,
-            name: imageUploadRes.name,
-            size: imageUploadRes.size,
-            filePath: imageUploadRes.filePath,
-            originalName: uploadedFile.originalname,
-            mimeType: uploadedFile.mimetype,
             uploadedAt: new Date().toISOString(),
         }, null));
     }

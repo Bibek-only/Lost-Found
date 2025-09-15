@@ -78,12 +78,6 @@ const imageUpload = async (req: Request, res: Response, next: NextFunction) => {
         {
           fileId: imageUploadRes.fileId,
           imageUrl: imageUploadRes.url,
-          thumbnailUrl: imageUploadRes.thumbnailUrl,
-          name: imageUploadRes.name,
-          size: imageUploadRes.size,
-          filePath: imageUploadRes.filePath,
-          originalName: uploadedFile.originalname,
-          mimeType: uploadedFile.mimetype,
           uploadedAt: new Date().toISOString(),
         },
         null,

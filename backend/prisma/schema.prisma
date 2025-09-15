@@ -20,13 +20,7 @@ enum UserType {
   NORMAL
 }
 
-enum CampusRole {
-  STUDENT
-  TEACHER
-  FACULTY
-  STAFF
-  OTHER
-}
+
 
 enum UserState {
   LOST
@@ -41,39 +35,8 @@ enum CurrentYear {
   FOURTH
 }
 
-enum Designation {
-  PROFESSOR
-  ASSOCIATE_PROFESSOR
-  ASSISTANT_PROFESSOR
-  LECTURER
-  HOD
-  PRINCIPAL
-  LAB_ASSISTANT
-  LIBRARIAN
-  ADMINISTRATIVE_STAFF
-  CLERK
-  SECURITY
-  OTHER
-}
 
-enum JobTitle {
-  LAB_TECHNICIAN
-  OFFICE_ASSISTANT
-  LIBRARY_ASSISTANT
-  ACCOUNTANT
-  DRIVER
-  PEON
-  CLEANER
-  SECURITY_GUARD
-  ELECTRICIAN
-  PLUMBER
-  GARDENER
-  MAINTENANCE_WORKER
-  IT_SUPPORT
-  HOSTEL_WARDEN
-  CANTEEN_STAFF
-  OTHER
-}
+
 
 //user Model
 model User {
@@ -86,9 +49,10 @@ model User {
   email        String   @unique
   phoneNo      String?
   address      Address?
+  isProfileCompleted Boolean @default(false)
 
   userType   UserType   @default(NORMAL)
-  campusRole CampusRole @default(STUDENT)
+  campusRole String @default("Student")
   userState  UserState  @default(NONE)
 
   // Student Info
@@ -98,15 +62,15 @@ model User {
   currentYear  CurrentYear?
 
   // Teacher Info
-  designation Designation?
+  designation String?
   department  String?
 
   // Staff Info
-  jobTitle  JobTitle? // e.g., "Librarian"
+  jobTitle  String? // e.g., "Librarian"
   staffDept String? // e.g., "Library", "Admin"
 
   // Other
-  description String? // e.g., "Alumni – Batch 2018"
+  other String? // e.g., "Alumni – Batch 2018"
 
   //reference to tthe listing
   listing Listing[]
@@ -117,8 +81,8 @@ model User {
 
 model Address {
   id       Int     @id @unique @default(autoincrement())
-  country  String?
-  state    String?
+  country  String? @default("India")
+  state    String? 
   district String?
   city     String?
   pin      String?
