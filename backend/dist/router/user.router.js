@@ -9,8 +9,10 @@ const authMiddleware_1 = __importDefault(require("../middleware/authMiddleware")
 const updateProfile_controller_js_1 = require("../controller/updateProfile.controller.js");
 const getUserInfo_controller_js_1 = require("../controller/getUserInfo.controller.js");
 const authStatus_controller_js_1 = require("../controller/authStatus.controller.js");
+const portalEntry_controller_js_1 = require("../controller/portalEntry.controller.js");
 const userRouter = (0, express_1.Router)();
 exports.userRouter = userRouter;
 userRouter.route("/update-profile").post(authMiddleware_1.default, updateProfile_controller_js_1.updateProfile);
 userRouter.route("/get-info").post(authMiddleware_1.default, getUserInfo_controller_js_1.getUserInfo);
 userRouter.route("/auth/status").get(authMiddleware_1.default, authStatus_controller_js_1.getAuthStatus);
+userRouter.route("/portal-entry").post(authMiddleware_1.default, portalEntry_controller_js_1.portalEntry);
