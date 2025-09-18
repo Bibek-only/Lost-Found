@@ -3,7 +3,7 @@ import { getAuthStatus } from "./api/asynthunk/authAsyncThunk";
 
 type authState = {
   isAuthenticate: boolean;
-  loading: boolean;
+  authLoading: boolean;
   error: string | null;
   isAuthCardVisible: boolean;
 };
@@ -11,16 +11,16 @@ const initialState: authState = {
   isAuthenticate: false,
   authLoading: false,
   error: null,
-  isAuthCardVisible: false
+  isAuthCardVisible: false,
 };
 
 const authSlice = createSlice({
   name: "authSlice",
   initialState,
   reducers: {
-    setAuthCardVisible: (state,action)=>{
+    setAuthCardVisible: (state, action) => {
       state.isAuthCardVisible = action.payload;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getAuthStatus.pending, (state) => {
