@@ -10,6 +10,6 @@ const portalEntrySchema = zod_1.z.object({
     landmark: zod_1.z.string().trim().optional(),
     lostOrFoundAt: zod_1.z.coerce.date().optional(),
     imageUrls: zod_1.z.array(zod_1.z.string()),
-    fileIds: zod_1.z.array(zod_1.z.string())
+    fileIds: zod_1.z.array(zod_1.z.string()),
 });
 exports.portalEntrySchema = portalEntrySchema;

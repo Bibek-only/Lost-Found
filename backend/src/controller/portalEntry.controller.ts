@@ -1,6 +1,6 @@
 import prisma from "../db/prismaClient";
 import { portalEntrySchema } from "../schemas/portalEntry.schema";
-import { Request,Response } from "express";
+import { Request, Response } from "express";
 import ApiError from "../utils/apiError";
 import ApiResponse from "../utils/apiResponse";
 
@@ -54,7 +54,7 @@ const portalEntry = async (req: Request | any, res: Response | any) => {
       );
     }
   } catch (error: any) {
-    console.log(error)
+    console.log(error);
     if (error instanceof ApiError) {
       return res
         .status(error.statusCode)
@@ -83,4 +83,4 @@ const portalEntry = async (req: Request | any, res: Response | any) => {
   }
 };
 
-export {portalEntry}
+export { portalEntry };

@@ -35,7 +35,7 @@ const googleAuthCallback = (req, res) => {
             path: "/",
         });
         // Redirect to frontend success page
-        res.redirect(`${envSchema_1.validENV.FRONTEND_URL_DEV}/auth/success`);
+        res.redirect(`${envSchema_1.validENV.FRONTEND_URL_DEV}/`);
     }
     catch (error) {
         console.error("Google auth callback error:", error);

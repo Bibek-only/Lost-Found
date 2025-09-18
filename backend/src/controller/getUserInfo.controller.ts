@@ -10,10 +10,7 @@ export const getUserInfo = async (req: Request | any, res: Response | any) => {
         id: req.userId,
         email: req.userEmail,
       },
-      include:{
-        
-      }
-      
+      include: {},
     });
     if (!userRes) {
       throw new ApiError(400, "Can'g get the user information");

@@ -14,7 +14,7 @@ const getUserInfo = async (req, res) => {
                 id: req.userId,
                 email: req.userEmail,
             },
-            include: {}
+            include: {},
         });
         if (!userRes) {
             throw new apiError_1.default(400, "Can'g get the user information");

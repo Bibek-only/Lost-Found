@@ -145,4 +145,4 @@ const updateProfile = async (req: Request | any, res: Response | any) => {
   }
 };
 
-export {updateProfile}
+export { updateProfile };

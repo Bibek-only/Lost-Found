@@ -35,10 +35,10 @@ app.use("/api/v1/user/auth", authRouter);
 app.use("/api/v1/user/image", imageRouter);
 
 //configured the testing route
-app.use("/api/v1/user/auth/testing",testingRouter)
+app.use("/api/v1/user/auth/testing", testingRouter);
 
 //user router configuration
-app.use("/api/v1/user",userRouter);
+app.use("/api/v1/user", userRouter);
 
 // A test router to test functionality of function in temporary bases
 app.get("/test", async (req, res) => {

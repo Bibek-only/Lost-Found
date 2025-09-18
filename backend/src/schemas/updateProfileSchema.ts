@@ -1,4 +1,3 @@
-
 import { z } from "zod";
 
 const updateProfileSchema = z.object({
@@ -72,4 +71,4 @@ const updateProfileSchema = z.object({
     .optional(),
 });
 
-export {updateProfileSchema}
+export { updateProfileSchema };
