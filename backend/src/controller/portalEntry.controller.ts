@@ -3,6 +3,7 @@ import { portalEntrySchema } from "../schemas/portalEntry.schema";
 import { Request, Response } from "express";
 import ApiError from "../utils/apiError";
 import ApiResponse from "../utils/apiResponse";
+import { findMatches } from "../helper/findMatches";
 
 const portalEntry = async (req: Request | any, res: Response | any) => {
   try {
@@ -22,9 +23,6 @@ const portalEntry = async (req: Request | any, res: Response | any) => {
               ? new Date(validData.data.lostOrFoundAt)
               : new Date(),
           },
-          select: {
-            id: true,
-          },
         });
         // Create images after listing exists
         const imagesEntryRes = await tx.itemImage.createMany({
@@ -34,7 +32,9 @@ const portalEntry = async (req: Request | any, res: Response | any) => {
             listingId: portalEntryRes.id, // existing listing
           })),
         });
+        await findMatches(portalEntryRes, tx);
       });
+
       return res
         .status(200)
         .json(

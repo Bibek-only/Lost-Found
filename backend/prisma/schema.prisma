@@ -122,6 +122,8 @@ model Listing {
   images ItemImage[] //relation to image model
   userId Int
   user   User        @relation(fields: [userId], references: [id])
+  lostMatches  MatchRecord[] @relation("LostMatch")
+  foundMatches MatchRecord[] @relation("FoundMatch")
 }
 
 model ItemImage {
@@ -131,3 +133,14 @@ model ItemImage {
   listingId Int
   listing   Listing @relation(fields: [listingId], references: [id])
 }
+
+model MatchRecord {
+  id        Int      @id @default(autoincrement())
+  lostId    Int
+  foundId   Int
+  createdAt DateTime @default(now())
+  
+  lostListing  Listing @relation("LostMatch", fields: [lostId], references: [id])
+  foundListing Listing @relation("FoundMatch", fields: [foundId], references: [id])
+}
+

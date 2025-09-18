@@ -8,6 +8,7 @@ const prismaClient_1 = __importDefault(require("../db/prismaClient"));
 const portalEntry_schema_1 = require("../schemas/portalEntry.schema");
 const apiError_1 = __importDefault(require("../utils/apiError"));
 const apiResponse_1 = __importDefault(require("../utils/apiResponse"));
+const findMatches_1 = require("../helper/findMatches");
 const portalEntry = async (req, res) => {
     try {
         const validData = portalEntry_schema_1.portalEntrySchema.safeParse(req.body);
@@ -26,9 +27,6 @@ const portalEntry = async (req, res) => {
                             ? new Date(validData.data.lostOrFoundAt)
                             : new Date(),
                     },
-                    select: {
-                        id: true,
-                    },
                 });
                 // Create images after listing exists
                 const imagesEntryRes = await tx.itemImage.createMany({
@@ -38,6 +36,7 @@ const portalEntry = async (req, res) => {
                         listingId: portalEntryRes.id, // existing listing
                     })),
                 });
+                await (0, findMatches_1.findMatches)(portalEntryRes, tx);
             });
             return res
                 .status(200)
