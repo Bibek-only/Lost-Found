@@ -4,6 +4,7 @@ import { getAuthStatus } from '../store/reducers/api/asynthunk/authAsyncThunk';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../store/store';
 
+
 const HomePage = () => {
     
   return (

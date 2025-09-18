@@ -6,9 +6,10 @@ import Footer from "../components/Footer";
 import AuthCard from "../components/Auth";
 import { setAuthCardVisible } from "../store/reducers/authReducer";
 import type { AppDispatch } from "../store/store";
+import Loader from "../components/Loader";
 
 export default function LandingPage() {
-  const { isAuthenticate, isAuthCardVisible } = useSelector(
+  const { isAuthenticate, isAuthCardVisible , authLoading} = useSelector(
     (state: any) => state.authReducer
   );
   console.log(isAuthenticate);
@@ -191,6 +192,7 @@ export default function LandingPage() {
       {/* Footer */}
       <Footer></Footer>
       {isAuthCardVisible ? <AuthCard></AuthCard> : null}
+      {authLoading?<Loader></Loader>:null}
     </div>
   );
 }

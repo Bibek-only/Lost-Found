@@ -9,7 +9,7 @@ type authState = {
 };
 const initialState: authState = {
   isAuthenticate: false,
-  loading: false,
+  authLoading: false,
   error: null,
   isAuthCardVisible: false
 };
@@ -25,16 +25,16 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getAuthStatus.pending, (state) => {
       //set the loading to true
-      state.loading = true;
+      state.authLoading = true;
     });
     builder.addCase(getAuthStatus.fulfilled, (state) => {
       //set the auth status to true
       state.isAuthenticate = true;
-      state.loading = false;
+      state.authLoading = false;
     });
     builder.addCase(getAuthStatus.rejected, (state, action) => {
       // set the loader to false with error message
-      state.loading = false;
+      state.authLoading = false;
       state.error = action.error.message || "Failed to authenticate";
     });
   },
