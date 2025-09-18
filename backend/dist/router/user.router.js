@@ -10,9 +10,11 @@ const updateProfile_controller_js_1 = require("../controller/updateProfile.contr
 const getUserInfo_controller_js_1 = require("../controller/getUserInfo.controller.js");
 const authStatus_controller_js_1 = require("../controller/authStatus.controller.js");
 const portalEntry_controller_js_1 = require("../controller/portalEntry.controller.js");
+const getAllListingItem_controller_js_1 = require("../controller/getAllListingItem.controller.js");
 const userRouter = (0, express_1.Router)();
 exports.userRouter = userRouter;
 userRouter.route("/update-profile").post(authMiddleware_1.default, updateProfile_controller_js_1.updateProfile);
 userRouter.route("/get-info").get(authMiddleware_1.default, getUserInfo_controller_js_1.getUserInfo);
 userRouter.route("/auth/status").get(authMiddleware_1.default, authStatus_controller_js_1.getAuthStatus);
 userRouter.route("/portal-entry").post(authMiddleware_1.default, portalEntry_controller_js_1.portalEntry);
+userRouter.route("/get-all-listing").get(authMiddleware_1.default, getAllListingItem_controller_js_1.getAllListedItems);
