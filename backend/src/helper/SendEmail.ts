@@ -5,7 +5,7 @@ type SendEmailType = {
   to: string;
   subject: string;
   listerName: string;
-  listerEmail: string       // who posted (lost or found person)
+  listerEmail: string; // who posted (lost or found person)
   description: string;
   keywords: string[];
   productImageUrl?: string; // optional
@@ -35,7 +35,7 @@ export const sendEmail = async (obj: SendEmailType) => {
           }
 
           <p style="margin-top: 20px;">👉 Visit the 
-            <a href="${validENV.FRONTEND_URL_DEV}" style="color: #007bff; text-decoration: none;">Lost & Found Portal</a> 
+            <a href="${validENV.FRONTEND_URL}" style="color: #007bff; text-decoration: none;">Lost & Found Portal</a> 
             to connect with the owner/finder.
           </p>
           

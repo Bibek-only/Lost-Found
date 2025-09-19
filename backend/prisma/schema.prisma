@@ -11,7 +11,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL_DEV")
+  url      = env("DATABASE_URL")
 }
 
 //user type
@@ -19,8 +19,6 @@ enum UserType {
   ADMIN
   NORMAL
 }
-
-
 
 enum UserState {
   LOST
@@ -35,25 +33,22 @@ enum CurrentYear {
   FOURTH
 }
 
-
-
-
 //user Model
 model User {
-  id           Int      @id @unique @default(autoincrement())
-  fullName     String
-  firstName    String?
-  middleName   String?
-  lastName     String?
-  profileImage String?
-  email        String   @unique
-  phoneNo      String?
-  address      Address?
-  isProfileCompleted Boolean @default(false)
+  id                 Int      @id @unique @default(autoincrement())
+  fullName           String
+  firstName          String?
+  middleName         String?
+  lastName           String?
+  profileImage       String?
+  email              String   @unique
+  phoneNo            String?
+  address            Address?
+  isProfileCompleted Boolean  @default(false)
 
-  userType   UserType   @default(NORMAL)
-  campusRole String @default("Student")
-  userState  UserState  @default(NONE)
+  userType   UserType  @default(NORMAL)
+  campusRole String    @default("Student")
+  userState  UserState @default(NONE)
 
   // Student Info
   branch       String?
@@ -82,7 +77,7 @@ model User {
 model Address {
   id       Int     @id @unique @default(autoincrement())
   country  String? @default("India")
-  state    String? 
+  state    String?
   district String?
   city     String?
   pin      String?
@@ -119,9 +114,9 @@ model Listing {
 
   isDeleted Boolean @default(false)
 
-  images ItemImage[] //relation to image model
-  userId Int
-  user   User        @relation(fields: [userId], references: [id])
+  images       ItemImage[] //relation to image model
+  userId       Int
+  user         User          @relation(fields: [userId], references: [id])
   lostMatches  MatchRecord[] @relation("LostMatch")
   foundMatches MatchRecord[] @relation("FoundMatch")
 }
@@ -129,7 +124,7 @@ model Listing {
 model ItemImage {
   id        Int     @id @unique @default(autoincrement())
   imageUrl  String
-  fileId String
+  fileId    String
   listingId Int
   listing   Listing @relation(fields: [listingId], references: [id])
 }
@@ -139,8 +134,7 @@ model MatchRecord {
   lostId    Int
   foundId   Int
   createdAt DateTime @default(now())
-  
+
   lostListing  Listing @relation("LostMatch", fields: [lostId], references: [id])
   foundListing Listing @relation("FoundMatch", fields: [foundId], references: [id])
 }
-

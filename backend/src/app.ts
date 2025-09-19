@@ -18,7 +18,7 @@ app.use(express.json()); //middleware to parse/access the body
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: [validENV.FRONTEND_URL_DEV],
+    origin: [validENV.FRONTEND_URL],
     credentials: true,
   }),
 );

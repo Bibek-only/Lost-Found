@@ -8,7 +8,7 @@ const googleAuthCallback = (req: Request, res: Response) => {
     // Check if user exists from passport authentication
     if (!req.user) {
       return res.redirect(
-        `${validENV.FRONTEND_URL_DEV}/auth/error?message=Authentication failed`,
+        `${validENV.FRONTEND_URL}/auth/error?message=Authentication failed`,
       );
     }
 
@@ -17,7 +17,7 @@ const googleAuthCallback = (req: Request, res: Response) => {
     // Validate user data
     if (!user.id || !user.email) {
       return res.redirect(
-        `${validENV.FRONTEND_URL_DEV}/auth/error?message=Invalid user data`,
+        `${validENV.FRONTEND_URL}/auth/error?message=Invalid user data`,
       );
     }
 
@@ -45,11 +45,11 @@ const googleAuthCallback = (req: Request, res: Response) => {
     });
 
     // Redirect to frontend success page
-    res.redirect(`${validENV.FRONTEND_URL_DEV}/`);
+    res.redirect(`${validENV.FRONTEND_URL}/`);
   } catch (error) {
     console.error("Google auth callback error:", error);
     res.redirect(
-      `${validENV.FRONTEND_URL_DEV}/auth/error?message=Authentication failed`,
+      `${validENV.FRONTEND_URL}/auth/error?message=Authentication failed`,
     );
   }
 };
