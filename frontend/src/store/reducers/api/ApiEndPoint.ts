@@ -1,2 +1,2 @@
-const API_ENDPOINT = "http://localhost:3000/api/v1";
+const API_ENDPOINT = "https://lost-found-d2tm.onrender.com/api/v1";
 export { API_ENDPOINT };
