@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import { getAuthStatus } from "../store/reducers/api/asynthunk/authAsyncThunk";
 import { getAllListing } from "../store/reducers/api/asynthunk/listingAsyncThunk";

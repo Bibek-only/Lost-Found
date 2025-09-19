@@ -17,7 +17,7 @@ const PortalEntryPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   // Get portal entry state from Redux store
-  const { isSubmitting, submitSuccess, error, validationErrors } = useSelector(
+  const { isSubmitting, error, validationErrors } = useSelector(
     (state: RootState) => state.portalEntryReducer
   );
 

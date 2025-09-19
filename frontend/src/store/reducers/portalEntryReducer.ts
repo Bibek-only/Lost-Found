@@ -45,7 +45,7 @@ const portalEntrySlice = createSlice({
     });
 
     // Handle successful portal entry submission
-    builder.addCase(submitPortalEntry.fulfilled, (state, action) => {
+    builder.addCase(submitPortalEntry.fulfilled, (state) => {
       state.isSubmitting = false;
       state.submitSuccess = true;
       state.error = null;

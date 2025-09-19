@@ -1,11 +1,11 @@
-import { Search, Users, Shield, Heart, User } from "lucide-react";
+import { Search,  User } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthCardVisible } from "../store/reducers/authReducer";
 import type { AppDispatch } from "../store/store";
 
 const NavBar = () => {
-  const { isAuthenticate, isAuthCardVisible } = useSelector(
+  const { isAuthenticate } = useSelector(
     (state: any) => state.authReducer
   );
   const dispatch = useDispatch<AppDispatch>();
