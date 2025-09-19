@@ -5,34 +5,40 @@ type listingType = {
   listingLoading: boolean;
   listItems: any[];
   error: string | null;
+  lastFetched: number | null; // Track when data was last fetched
 };
 
 const initialState: listingType = {
   listingLoading: false,
   listItems: [],
   error: null,
+  lastFetched: null,
 };
 
 const listSlice = createSlice({
   name: "listSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    // Action to invalidate cache and force refresh
+    invalidateListingCache: (state) => {
+      state.lastFetched = null;
+    },
+  },
   extraReducers: (builder: any) => {
     builder.addCase(getAllListing.pending, (state: any) => {
-      //set the loading to true
       state.listingLoading = true;
     });
     builder.addCase(getAllListing.fulfilled, (state: any, action: any) => {
-      //set the auth status to true
       state.listItems = action.payload;
       state.listingLoading = false;
+      state.lastFetched = Date.now(); // Track fetch time
     });
     builder.addCase(getAllListing.rejected, (state: any, action: any) => {
-      // set the loader to false with error message
       state.listingLoading = false;
-      state.error = action.error.message || "Failed to authenticate";
+      state.error = action.error.message || "Failed to fetch listings";
     });
   },
 });
 
+export const { invalidateListingCache } = listSlice.actions;
 export default listSlice.reducer;

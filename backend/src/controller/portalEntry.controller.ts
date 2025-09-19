@@ -4,11 +4,13 @@ import { Request, Response } from "express";
 import ApiError from "../utils/apiError";
 import ApiResponse from "../utils/apiResponse";
 import { findMatches } from "../helper/findMatches";
+import { sendEmail } from "../helper/SendEmail";
 
 const portalEntry = async (req: Request | any, res: Response | any) => {
   try {
     const validData = portalEntrySchema.safeParse(req.body);
     if (validData.success) {
+      let emailsToSend: any[] = []; // for sending email
       //create an transaction
       const portalEntry = await prisma.$transaction(async (tx) => {
         const portalEntryRes = await tx.listing.create({
@@ -32,8 +34,17 @@ const portalEntry = async (req: Request | any, res: Response | any) => {
             listingId: portalEntryRes.id, // existing listing
           })),
         });
-        await findMatches(portalEntryRes, tx);
+        emailsToSend = await findMatches(portalEntryRes, tx);
       });
+      // Send emails AFTER transaction completes (outside transaction)
+      for (const emailData of emailsToSend) {
+        try {
+          await sendEmail(emailData);
+        } catch (emailError) {
+          console.error("Failed to send email:", emailError);
+          // Continue with other emails even if one fails
+        }
+      }
 
       return res
         .status(200)

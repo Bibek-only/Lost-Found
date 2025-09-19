@@ -22,7 +22,10 @@ const NavBar = () => {
               <Search className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold text-gray-900">
+              <NavLink to="/">
+
               IGIT Lost & Found
+              </NavLink>
             </span>
           </div>
 

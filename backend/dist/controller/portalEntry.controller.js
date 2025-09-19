@@ -9,10 +9,12 @@ const portalEntry_schema_1 = require("../schemas/portalEntry.schema");
 const apiError_1 = __importDefault(require("../utils/apiError"));
 const apiResponse_1 = __importDefault(require("../utils/apiResponse"));
 const findMatches_1 = require("../helper/findMatches");
+const SendEmail_1 = require("../helper/SendEmail");
 const portalEntry = async (req, res) => {
     try {
         const validData = portalEntry_schema_1.portalEntrySchema.safeParse(req.body);
         if (validData.success) {
+            let emailsToSend = []; // for sending email
             //create an transaction
             const portalEntry = await prismaClient_1.default.$transaction(async (tx) => {
                 const portalEntryRes = await tx.listing.create({
@@ -36,8 +38,18 @@ const portalEntry = async (req, res) => {
                         listingId: portalEntryRes.id, // existing listing
                     })),
                 });
-                await (0, findMatches_1.findMatches)(portalEntryRes, tx);
+                emailsToSend = await (0, findMatches_1.findMatches)(portalEntryRes, tx);
             });
+            // Send emails AFTER transaction completes (outside transaction)
+            for (const emailData of emailsToSend) {
+                try {
+                    await (0, SendEmail_1.sendEmail)(emailData);
+                }
+                catch (emailError) {
+                    console.error("Failed to send email:", emailError);
+                    // Continue with other emails even if one fails
+                }
+            }
             return res
                 .status(200)
                 .json(new apiResponse_1.default(true, 200, "Successfully done the portal Entrye", null, null));
