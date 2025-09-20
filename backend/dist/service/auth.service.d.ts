@@ -23,4 +23,4 @@ export declare function findOrCreateUser(profile: Profile): Promise<{
     other: string | null;
     createdAt: Date;
     updatedAt: Date;
-} | undefined>;
+}>;

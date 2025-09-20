@@ -47,8 +47,8 @@ const testSignin = async (req, res) => {
                 // Set secure cookie
                 res.cookie("token", `Bearer ${jwtToken}`, {
                     httpOnly: true,
-                    sameSite: envSchema_1.validENV.NODE_ENV === "production" ? "none" : "lax",
-                    secure: envSchema_1.validENV.NODE_ENV === "production",
+                    sameSite: "none",
+                    secure: true,
                     maxAge: 3 * 24 * 60 * 60 * 1000, // 3 days
                     path: "/",
                 });

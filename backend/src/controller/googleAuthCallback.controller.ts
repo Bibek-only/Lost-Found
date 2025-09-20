@@ -38,8 +38,8 @@ const googleAuthCallback = (req: Request, res: Response) => {
     // Set secure cookie
     res.cookie("token", `Bearer ${jwtToken}`, {
       httpOnly: true,
-      sameSite: validENV.NODE_ENV === "production" ? "none" : "lax",
-      secure: validENV.NODE_ENV === "production",
+      sameSite: "none",
+      secure: true,
       maxAge: 3 * 24 * 60 * 60 * 1000, // 3 days
       path: "/",
     });
