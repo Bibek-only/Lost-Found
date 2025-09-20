@@ -47,8 +47,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App></App>}>
       <Route index element={<LandingPage></LandingPage>}></Route>
-      <Route path="/portal-entry" element={<PortalEntryPage></PortalEntryPage>}></Route>
       <Route element={<IsAuthRoute></IsAuthRoute>}>
+      <Route path="/portal-entry" element={<PortalEntryPage></PortalEntryPage>}></Route>
         <Route path="home" element={<HomePage></HomePage>}></Route>
         <Route path="profile" element={<ProfilePage></ProfilePage>}></Route>
       </Route>
