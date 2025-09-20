@@ -6,7 +6,7 @@ import { multerFileSchema } from "../schemas/multerFileSchema";
 import ApiError from "../utils/apiError";
 import ApiResponse from "../utils/apiResponse";
 
-const imageUpload = async (req: Request, res: Response, next: NextFunction) => {
+const imageUpload = async (req: Request | any, res: Response | any, next: NextFunction | any) => {
   let tempFilePath: string | null = null;
 
   try {

@@ -19,9 +19,9 @@ interface AuthenticatedRequest extends Request {
 }
 
 const authMiddleware = async (
-  req: AuthenticatedRequest,
-  res: Response,
-  next: NextFunction,
+  req: AuthenticatedRequest | any,
+  res: Response | any,
+  next: NextFunction | any,
 ) => {
   try {
     // Check if token exists in cookies
